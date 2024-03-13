@@ -16,6 +16,7 @@ public class CharController : MonoBehaviour
     // Fall detection
     public Transform rayStart;
     private Animator animator;
+    private float airTime;
 
     // Crystal pickup
     public GameObject crystalEffect;
@@ -46,15 +47,16 @@ public class CharController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space)) { SwitchDirection(); }
-
+        if(Input.GetKeyDown(KeyCode.Mouse0)) { SwitchDirection(); }
+        
         RaycastHit hit;
         if(!Physics.Raycast(rayStart.position,-transform.up, out hit, Mathf.Infinity)) // Raycast down from player, if no hit...
         {
             animator.SetTrigger("FallTrigger");
         }
+        else { animator.SetTrigger("FalseFall"); }
 
-        if (transform.position.y < -2)
+        if (transform.position.y < -2.5f)
         {
             gameManager.EndGame();
         }

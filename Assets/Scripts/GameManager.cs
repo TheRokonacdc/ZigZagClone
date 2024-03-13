@@ -22,12 +22,13 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0)) { StartGame(); }
+        if (Input.GetKeyDown(KeyCode.Mouse1)) { StartGame(); }
     }
 
     public void StartGame()
     {
         gameStarted = true;
+        FindAnyObjectByType<RoadGeneration>().StartBuildingRoad();
     }
 
     public void EndGame()
