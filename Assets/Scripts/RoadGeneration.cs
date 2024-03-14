@@ -21,6 +21,8 @@ public class RoadGeneration : MonoBehaviour
     private GameObject oldRoad;
     private GameObject newRoad;
 
+    private List<GameObject> oldRoads;
+
     //public void StartBuildingRoad()
     //{
     //    InvokeRepeating("EndlessRoad", 0f, .2f);
