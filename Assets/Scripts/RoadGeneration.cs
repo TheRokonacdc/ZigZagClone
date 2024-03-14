@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,10 +13,60 @@ public class RoadGeneration : MonoBehaviour
 
     private int roadCount = 0;
 
+    public Rigidbody rb;
 
-    public void StartBuildingRoad()
+    public float distanceToLastRoad;
+    public float distanceFromOldRoad;
+
+    private GameObject oldRoad;
+    private GameObject newRoad;
+
+    //public void StartBuildingRoad()
+    //{
+    //    InvokeRepeating("EndlessRoad", 0f, .2f);
+    //    InvokeRepeating("DestroyRoadBlock", 0f, .2f);
+    //}
+
+    public void Awake()
     {
-        InvokeRepeating("CreateNewRoadBlock", 0f, .5f);
+        //StartBuildingRoad();
+    }
+
+    private void Update()
+    {
+        //if(Input.GetKeyDown(KeyCode.Space)) { CreateNewRoadBlock(); }
+        //if (Input.GetKeyDown(KeyCode.G)) { DestroyRoadBlock(); }
+
+        distanceToLastRoad = lastRoadPos.sqrMagnitude - rb.position.sqrMagnitude;
+        Debug.Log("Distance to Last Road: " +  distanceToLastRoad);
+        if (distanceToLastRoad < 100)
+        {
+            Debug.Log("sqrMag of last road - sqrMag of player is: " 
+                + (lastRoadPos.sqrMagnitude - rb.position.sqrMagnitude).ToString());
+            EndlessRoad();
+        }
+
+        distanceFromOldRoad = rb.position.sqrMagnitude - newRoad.transform.position.sqrMagnitude;
+        Debug.Log("Distance from Old Road: " + distanceFromOldRoad);
+        if (distanceFromOldRoad < -150)
+        {
+            Debug.Log("Destroy road block.");
+            Debug.Log("sqrMag of player is - sqrMag of gameObject is: " 
+                + (rb.position.sqrMagnitude - transform.position.sqrMagnitude).ToString());
+            DestroyRoadBlock();
+        }
+    }
+
+    public void EndlessRoad()
+    {
+        Debug.Log("Inside EndlessRoad");
+        CreateNewRoadBlock();
+    }
+
+    public void DestroyRoadBlock()
+    {
+        Debug.Log("Inside DestroyRoadBlock" + newRoad.ToString());
+        Destroy(newRoad);
     }
 
     public void CreateNewRoadBlock()
@@ -31,7 +82,7 @@ public class RoadGeneration : MonoBehaviour
         }
         else { spawnPos = new Vector3(lastRoadPos.x - offset, lastRoadPos.y, lastRoadPos.z + offset); }
         
-        GameObject newRoad = Instantiate(roadPrefab,spawnPos,Quaternion.Euler(0,45,0));
+        newRoad = Instantiate(roadPrefab,spawnPos,Quaternion.Euler(0,45,0));
         lastRoadPos = newRoad.transform.position;
         roadCount++;
         if (roadCount % 5 == 0 ) { newRoad.transform.GetChild(0).gameObject.SetActive(true); }

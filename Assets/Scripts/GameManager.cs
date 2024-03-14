@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI highScoreText;
 
+    public Vector3 charPos;
+
     public void Awake()
     {
         scoreText.text = $"Score: {score}";
@@ -28,7 +30,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         gameStarted = true;
-        FindAnyObjectByType<RoadGeneration>().StartBuildingRoad();
+        //FindAnyObjectByType<RoadGeneration>().StartBuildingRoad();
     }
 
     public void EndGame()

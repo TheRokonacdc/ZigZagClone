@@ -221,6 +221,7 @@ MonoBehaviour:
   highScore: 0
   scoreText: {fileID: 427723234}
   highScoreText: {fileID: 903298721}
+  charPos: {x: 0, y: 0, z: 0}
 --- !u!224 &194788585
 RectTransform:
   m_ObjectHideFlags: 0
@@ -697,6 +698,11 @@ Transform:
 --- !u!4 &886614247 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5464518724961110848, guid: 8b33c4f2071e1e34cb8cb77b1838fb05, type: 3}
+  m_PrefabInstance: {fileID: 5514652465862068886}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &886614249 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 8813892315868633642, guid: 8b33c4f2071e1e34cb8cb77b1838fb05, type: 3}
   m_PrefabInstance: {fileID: 5514652465862068886}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &903298719
@@ -1684,6 +1690,7 @@ MonoBehaviour:
   roadPrefab: {fileID: 1345590945381017813, guid: 90d277f7f230e7546ac2d59f63083752, type: 3}
   lastRoadPos: {x: 0, y: 0, z: 7.071068}
   offset: 0.7071068
+  rb: {fileID: 886614249}
 --- !u!1001 &5514652465862068886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1700,6 +1707,10 @@ PrefabInstance:
       propertyPath: rayStart
       value: 
       objectReference: {fileID: 218041574}
+    - target: {fileID: 3991404799545836920, guid: 8b33c4f2071e1e34cb8cb77b1838fb05, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 194788584}
     - target: {fileID: 3991404799545836920, guid: 8b33c4f2071e1e34cb8cb77b1838fb05, type: 3}
       propertyPath: crystalEffect
       value: 
@@ -1806,6 +1817,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1585380665055753343, guid: 90d277f7f230e7546ac2d59f63083752, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7642466484437256573, guid: 90d277f7f230e7546ac2d59f63083752, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

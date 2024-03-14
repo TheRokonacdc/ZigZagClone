@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharController : MonoBehaviour
 {
     // Savestate
-    private GameManager gameManager;
+    public GameManager gameManager;
     
     // Char RigidBody
     private Rigidbody rb;
@@ -20,6 +20,9 @@ public class CharController : MonoBehaviour
 
     // Crystal pickup
     public GameObject crystalEffect;
+
+    // Speed Incrementer
+    public float timeSpeedMod;
     
     // Start is called before the first frame update
     void Awake()
@@ -27,6 +30,7 @@ public class CharController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         gameManager = FindAnyObjectByType<GameManager>();
+        
     }
 
     private void FixedUpdate()
@@ -39,9 +43,12 @@ public class CharController : MonoBehaviour
         { 
             animator.SetTrigger("GameStart"); // Starts run animation
         }
-
+        // Scaling speed
+        timeSpeedMod = (float)Time.timeAsDouble / 100;
         // Moves player the direction it is facing at constant speed during input
-        rb.transform.position = transform.position + 2 * Time.deltaTime * transform.forward;
+        rb.transform.position = transform.position + (2 + timeSpeedMod) * Time.deltaTime * transform.forward;
+
+        gameManager.charPos = rb.transform.position;
     }
 
     // Update is called once per frame
