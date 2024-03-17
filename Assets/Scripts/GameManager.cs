@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-    public bool gameStarted;
+    public bool gameStarted = false;
     public int score = 0;
     public int highScore = 0;
 
@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1)) { StartGame(); }
+        if ( gameStarted == false && Input.GetKeyDown(KeyCode.Mouse1)) { StartGame(); }
     }
 
     public void StartGame()

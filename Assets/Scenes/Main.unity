@@ -1642,6 +1642,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1891186049}
   - component: {fileID: 1891186050}
+  - component: {fileID: 1891186051}
   m_Layer: 0
   m_Name: Road
   m_TagString: Untagged
@@ -1682,7 +1683,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891186048}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ec52e5ef7f2da443be9ff29ad1cb985, type: 3}
   m_Name: 
@@ -1691,6 +1692,26 @@ MonoBehaviour:
   lastRoadPos: {x: 0, y: 0, z: 7.071068}
   offset: 0.7071068
   rb: {fileID: 886614249}
+  distanceToLastRoad: 0
+  distanceFromOldRoad: 0
+--- !u!114 &1891186051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891186048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5576c7cb35d93f147921cef36fe7ecf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roadPrefab: {fileID: 1345590945381017813, guid: 90d277f7f230e7546ac2d59f63083752, type: 3}
+  lastRoadPos: {x: 0, y: 0, z: 7.071068}
+  offset: 0.7071068
+  rb: {fileID: 886614249}
+  distanceToLastRoad: 0
+  distanceFromOldRoad: 0
 --- !u!1001 &5514652465862068886
 PrefabInstance:
   m_ObjectHideFlags: 0
